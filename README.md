@@ -20,7 +20,9 @@ In addition to the application code, this repository demonstrates:
 
 ## System Block Diagram (Visual)
 
-The following diagram shows the end-to-end flow from the user to the database using Docker, Nginx, EC2, and MongoDB Atlas:
+The following diagrams show the end-to-end flow from the developer and user all the way to MongoDB Atlas, including CI/CD, Docker, Nginx, EC2, and the MEAN stack:
+
+![MEAN CI/CD Deployment Architecture](ss/image.png)
 
 ![System Architecture Block Diagram](ss/workingdd.png)
 

@@ -21,16 +21,11 @@ jobs:
           ssh-keyscan -H "${{ secrets.EC2_HOST }}" >> ~/.ssh/known_hosts
 
       - name: Deploy on EC2
-        env:
-          EC2_USER: ${{ secrets.EC2_USER }}
-          EC2_HOST: ${{ secrets.EC2_HOST }}
-          EC2_PATH: ${{ secrets.EC2_PATH }}
         run: |
-          ssh -i ~/.ssh/id_rsa "${EC2_USER}@${EC2_HOST}" << 'EOF'
+          ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "
             set -e
-            cd "${EC2_PATH}"
+            cd ${{ secrets.EC2_PATH }}
             git pull origin main
             docker compose down || docker-compose down || true
             docker compose up -d --build || docker-compose up -d --build
-          EOF
-
+          "
